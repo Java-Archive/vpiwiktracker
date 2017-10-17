@@ -20,9 +20,7 @@ public class MainUI extends UI {
     MainComponent mainComponent = new MainComponent();
 
     Navigator navigator = new Navigator(this, mainComponent.getContentArea());
-    navigator.addView(START_VIEW, MainView.class);
-    navigator.addView(LOGIN_VIEW, LoginView.class);
-    navigator.addView(OTHER_VIEW, OtherView.class);
+
 
     vPiwikTracker =
         new VPiwikTracker("0123456789abcdef01234567890abcde", "https://piwik.dummy.xx", 1);
@@ -36,6 +34,10 @@ public class MainUI extends UI {
     // This is only for demo purpose, this prevents us from a lot of exceptions, because there is no
     // piwik instance
     vPiwikTracker.setPiwikTracker(new MockPiwikTracker("https://piwik.dummy.xx"));
+
+    navigator.addView(START_VIEW, MainView.class);
+    navigator.addView(LOGIN_VIEW, new LoginView(vPiwikTracker));
+    navigator.addView(OTHER_VIEW, OtherView.class);
 
     setContent(mainComponent);
   }
