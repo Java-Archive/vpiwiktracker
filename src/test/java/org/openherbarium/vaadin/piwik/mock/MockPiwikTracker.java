@@ -1,7 +1,6 @@
-package org.openherbarium.vaadin.piwik;
+package org.openherbarium.vaadin.piwik.mock;
 
 import org.apache.http.client.HttpClient;
-import org.openherbarium.vaadin.piwik.mock.LogOnlyHttpClient;
 import org.piwik.java.tracking.PiwikTracker;
 
 public class MockPiwikTracker extends PiwikTracker {

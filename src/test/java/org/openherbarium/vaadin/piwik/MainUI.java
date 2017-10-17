@@ -1,5 +1,6 @@
 package org.openherbarium.vaadin.piwik;
 
+import org.openherbarium.vaadin.piwik.mock.MockPiwikTracker;
 import org.openherbarium.vaadin.piwik.view.LoginView;
 import org.openherbarium.vaadin.piwik.view.MainView;
 import org.openherbarium.vaadin.piwik.view.OtherView;
