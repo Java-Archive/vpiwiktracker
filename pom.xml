@@ -4,14 +4,11 @@
 	<!-- <parent> <groupId>org.rapidpm</groupId> <artifactId>rapidpm-dependencies</artifactId> 
 		<version>3.5.2</version> </parent> -->
 	<groupId>org.open-herbarium.vpiwiktracker</groupId>
-	<artifactId>vpiwiktracker-parent</artifactId>
+	<artifactId>vpiwiktracker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<name>Vaadin-piwik-tracker</name>
-	<modules>
-		<module>vpiwiktracker</module>
-		<module>vpiwiktracker-demo</module>
-	</modules>
+
 	<developers>
 		<developer>
 			<name>Daniel Nordhoff-Vergien</name>
@@ -30,7 +27,74 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>1.7.25</slf4j.version>
+		<undertow.version>1.4.16.Final</undertow.version>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.piwik.java.tracking</groupId>
+			<artifactId>piwik-java-tracker</artifactId>
+			<version>${piwik-java-tracker.version}</version>
+			<!-- to avoid problems with eg. spring boot without hibernate validator: 
+				https://github.com/piwik/piwik-java-tracker/pull/25 -->
+			<exclusions>
+				<exclusion>
+					<groupId>javaee</groupId>
+					<artifactId>javaee-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- TEST dependencies -->
+		
+		<dependency>
+			<groupId>io.undertow</groupId>
+			<artifactId>undertow-core</artifactId>
+			<version>${undertow.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.undertow</groupId>
+			<artifactId>undertow-servlet</artifactId>
+			<version>${undertow.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!--Vaadin -->
+
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-themes</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-client-compiled</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -45,6 +109,11 @@
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
+				<version>1.7.25</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
 				<version>1.7.25</version>
 			</dependency>
 		</dependencies>

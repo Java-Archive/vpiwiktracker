@@ -20,7 +20,7 @@ public class VPiwikTracker {
   private final String hostUrl;
 
   private boolean initialized = false;
-  private PiwikTracker tracker;
+  private PiwikTracker piwikTracker;
   private PiwikRequestFactory requestFacotry;
 
   private int siteId;
@@ -35,7 +35,7 @@ public class VPiwikTracker {
 
   public void init(VaadinRequest vaadinRequest) {
     if (vaadinRequest instanceof VaadinServletRequest) {
-      tracker = new PiwikTracker(hostUrl);
+      piwikTracker = new PiwikTracker(hostUrl);
       VaadinServletRequest vaadinServletRequest = (VaadinServletRequest) vaadinRequest;
       requestFacotry = new PiwikRequestFactory(vaadinServletRequest, authToken, siteId);
       initialized = true;
@@ -75,7 +75,7 @@ public class VPiwikTracker {
 
   private HttpResponse doTrack(PiwikRequest request) {
     try {
-      HttpResponse response = tracker.sendRequest(request);
+      HttpResponse response = piwikTracker.sendRequest(request);
       LOGGER.debug("Response: {}", response);
       return response;
     } catch (IOException e) {
@@ -92,5 +92,15 @@ public class VPiwikTracker {
   public void setSiteId(int siteId) {
     checkInitialized();
     requestFacotry.setSiteId(siteId);
+  }
+
+  /**
+   * This should be only used for testing, the instance of the {@link PiwikTracker} is created in
+   * the {@link #init(VaadinRequest)} method.
+   * 
+   * @param piwikTracker
+   */
+  public void setPiwikTracker(PiwikTracker piwikTracker) {
+    this.piwikTracker = piwikTracker;
   }
 }
