@@ -3,11 +3,13 @@ package org.openherbarium.vaadin.piwik;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.concurrent.CompletableFuture;
+
 import org.apache.http.HttpResponse;
 import org.piwik.java.tracking.PiwikRequest;
 import org.piwik.java.tracking.PiwikTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServletRequest;
@@ -94,12 +96,13 @@ public class VPiwikTracker {
     requestFacotry.setSiteId(siteId);
   }
 
-  /**
-   * This should be only used for testing, the instance of the {@link PiwikTracker} is created in
-   * the {@link #init(VaadinRequest)} method.
-   * 
-   * @param piwikTracker
-   */
+   /**
+    * This should be only used for testing, the instance of the
+    * {@link PiwikTracker} is created in the {@link #init(VaadinRequest)}
+    * method.
+    *
+    * @param piwikTracker
+    */
   public void setPiwikTracker(PiwikTracker piwikTracker) {
     this.piwikTracker = piwikTracker;
   }
