@@ -9,6 +9,12 @@
 	<packaging>jar</packaging>
 	<name>Vaadin-piwik-tracker</name>
 
+	<parent>
+    	<groupId>org.rapidpm</groupId>
+    	<artifactId>rapidpm-dependencies</artifactId>
+    	<version>3.5.2</version>
+  	</parent>
+  	
 	<developers>
 		<developer>
 			<name>Daniel Nordhoff-Vergien</name>
@@ -23,10 +29,6 @@
 	<properties>
 		<vaadin.version>8.1.4</vaadin.version>
 		<piwik-java-tracker.version>1.2</piwik-java-tracker.version>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<slf4j.version>1.7.25</slf4j.version>
 		<undertow.version>1.4.16.Final</undertow.version>
 	</properties>
 
@@ -54,8 +56,7 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
+			<artifactId>javax.servlet-api</artifactId>			
 			<scope>provided</scope>
 		</dependency>
 
@@ -104,17 +105,6 @@
 				<version>${vaadin.version}</version>
 				<scope>import</scope>
 				<type>pom</type>
-			</dependency>
-
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>1.7.25</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-				<version>1.7.25</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
